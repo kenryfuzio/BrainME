@@ -58,4 +58,35 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function boletos()
+    {
+        return $this->hasMany(Boleto::class);
+    }
+    
+    
+    public function data_comemorativas()
+    {
+        return $this->hasMany(Data_Comemorativa::class);
+    }
+    
+    
+    public function nota_academicas()
+    {
+        return $this->hasMany(Nota_Academica::class);
+    }
+   
+   
+    public function nota_gerals()
+    {
+        return $this->hasMany(Nota_Geral::class);
+    }
+    
+    
+    public function remedios()
+    {
+        return $this->hasMany(Remedio::class);
+    }
+
+
 }

@@ -19,10 +19,9 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('titulo');
             $table->text('descricao');
-            $table->string('tipo');
+            $table->string('nome');
             $table->string('alerta');
-            $table->date('data_inicio');
-            $table->date('data_final');
+            $table->date('data');
             $table->time('hora', $precision = 0);
             $table->timestamps();
         });
