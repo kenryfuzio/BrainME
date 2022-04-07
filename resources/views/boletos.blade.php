@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('conteudo')
 <div id="cadastro" class="md-5 container">

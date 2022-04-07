@@ -7,8 +7,8 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" integrity="sha512-rqQltXRuHxtPWhktpAZxLHUVJ3Eombn3hvk9PHjV/N5DMUYnzKPC1i3ub0mEXgFzsaZNeJcoE0YHq0j/GFsdGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{url('/')}}/style.css">
         <title>BrainME</title>
     </head>
     <body>
@@ -30,25 +30,32 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link "  href="modelopaglembrete.html">Início</a>
+                <a class="nav-link {{ (request()-> is('principal')) ? 'active' : '' }} "  href="{{route('principal')}}">Início</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Boletos</a>
+                <a class="nav-link {{ (request()-> is('boletos')) ? 'active' : '' }}" aria-current="page" href="{{route('boletos')}}">Boletos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="modelodatascomemorativas.html">Datas Comemorativas</a>
+                <a class="nav-link {{ (request()-> is('datas_comemorativas')) ? 'active' : '' }}" href="{{route('datas_comemorativas')}}">Datas Comemorativas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="modeloedicaogeral.html">Edição total</a>
+                <a class="nav-link {{ (request()-> is('notas_gerais')) ? 'active' : '' }}" href="{{route('notas_gerais')}}">Notas Gerais</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="modelocurso.html">Curso/Faculdade</a> 
+                <a class="nav-link {{ (request()-> is('notas_academicas')) ? 'active' : '' }}" href="{{route('notas_academicas')}}">Notas Acadêmicas</a> 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="modeloremedios.html">Remédios</a>
+                <a class="nav-link {{ (request()-> is('remedios')) ? 'active' : '' }}" href="{{route('remedios')}}">Remédios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Sair</a>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                  <a class="nav-link" href="{{ route('logout') }}"
+                  onclick="event.preventDefault(); this.closest('form').submit(); " role="button">
+                  <i class="fas fa-sign-out-alt"></i>
+                {{ __('Sair') }}
+                </a>
+              </form>
               </li>
               <li class="nav-item dropdown">
              
@@ -63,9 +70,19 @@
       </div>
     </nav>  
 
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+
         @yield('conteudo')
 
-           
+
+        </div>
+    </div>
+
+
+    
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
