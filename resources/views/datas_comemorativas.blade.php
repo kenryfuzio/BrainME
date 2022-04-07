@@ -21,10 +21,6 @@
                 </select>
                 <input type="text" class="form-control mb-3" name="outra_festa" placeholder="Digite o tipo da festa!" required>
               </p>
-                </form>
-
-
-
               <p class="mt-2">
                 <br><input type="checkbox" name="alerta" value="alerta" class="form-check-input"> Alerta Diário
                 </p>
@@ -38,6 +34,11 @@
               <br>
               <br>
               <input type="submit" value="Enviar" class="btn btn-primary">  
+                </form>
+
+
+
+             
 </div>
 
 
